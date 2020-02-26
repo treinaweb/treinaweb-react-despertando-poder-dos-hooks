@@ -1,28 +1,26 @@
-import React, {useState, useEffect, useRef, createRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 
 function Counter2(props){
   const [counter, setCounter] = useState(0);
+  const counterRef = useRef(0);
   const [title, setTitle] = useState('');
-  const defaultRef = createRef();
-  const hookRef = useRef();
 
   useEffect(() => {
-    console.log("EFFECT")
-    console.log("DEFAULT", defaultRef);
-    console.log("HOOK", hookRef);
+    setInterval(() => {
+    	console.log(counterRef);
+    }, 1000)
   }, [])
 
-  console.log("DEFAULT", defaultRef);
-  console.log("HOOK", hookRef);
+  useEffect(() => {
+    counterRef.current = counter;
+  }, [counter])
 
   return (
     <>
       <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)} />
       {title}
       <button onClick={()=> setCounter(counter + 1)} >Função: {counter}</button>
-      <div ref={defaultRef} />
-      <div ref={hookRef} />
     </>
   )
 }
