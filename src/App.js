@@ -1,30 +1,28 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, createRef} from 'react';
 import './App.css';
 
 function Counter2(props){
   const [counter, setCounter] = useState(0);
   const [title, setTitle] = useState('');
+  const defaultRef = createRef();
+  const hookRef = useRef();
 
   useEffect(() => {
-    function updateScroll(){
-      setTitle(window.scrollY);
-    }
-    const timer = setInterval(() => {}, 1000);
-    window.addEventListener('scroll', updateScroll);
-
-    return () => {
-      window.removeEventListener('scroll', updateScroll);
-      clearInterval(timer);
-    }
+    console.log("EFFECT")
+    console.log("DEFAULT", defaultRef);
+    console.log("HOOK", hookRef);
   }, [])
+
+  console.log("DEFAULT", defaultRef);
+  console.log("HOOK", hookRef);
 
   return (
     <>
-      <br /><br />
       <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)} />
       {title}
       <button onClick={()=> setCounter(counter + 1)} >Função: {counter}</button>
-      <br /><br />
+      <div ref={defaultRef} />
+      <div ref={hookRef} />
     </>
   )
 }
