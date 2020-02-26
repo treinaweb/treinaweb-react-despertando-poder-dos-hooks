@@ -6,17 +6,25 @@ function Counter2(props){
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    setInterval(() => {
-      console.log(1111);
-      setCounter(counter => counter + 1);
-    }, 2000) 
+    function updateScroll(){
+      setTitle(window.scrollY);
+    }
+    const timer = setInterval(() => {}, 1000);
+    window.addEventListener('scroll', updateScroll);
+
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+      clearInterval(timer);
+    }
   }, [])
 
   return (
     <>
+      <br /><br />
       <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)} />
       {title}
       <button onClick={()=> setCounter(counter + 1)} >Função: {counter}</button>
+      <br /><br />
     </>
   )
 }
