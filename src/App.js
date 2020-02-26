@@ -6,9 +6,11 @@ function Counter2(props){
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    console.log(3333)
-    document.title = title;
-  }, [title])
+    setInterval(() => {
+      console.log(1111);
+      setCounter(counter => counter + 1);
+    }, 2000) 
+  }, [])
 
   return (
     <>
