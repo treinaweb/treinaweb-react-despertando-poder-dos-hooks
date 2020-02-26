@@ -1,19 +1,21 @@
-import React, {useState, useEffect, createRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function Counter2(props){
   const [counter, setCounter] = useState(0);
-  const button = createRef();
+  const [title, setTitle] = useState('');
 
-  console.log(111, button)
   useEffect(() => {
-    console.log(3333, button)
-  })
-
-  console.log(2222, button)
+    console.log(3333)
+    document.title = title;
+  }, [title])
 
   return (
-    <button ref={button} onClick={()=> setCounter(counter + 1)} >Função: {counter}</button>
+    <>
+      <input type="text" value={title} onChange={(event)=>setTitle(event.target.value)} />
+      {title}
+      <button onClick={()=> setCounter(counter + 1)} >Função: {counter}</button>
+    </>
   )
 }
 
