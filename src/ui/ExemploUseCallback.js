@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useMemo} from 'react';
 
 export default function ExemploUseCallback(){
     const [a, setA] = useState(0);
@@ -6,6 +6,9 @@ export default function ExemploUseCallback(){
     const printB = useCallback(() => {
         console.log(b);
     }, [b])
+    const meuComp = useMemo(() => {
+        return <MeuComponente printB={printB} />
+    }, [printB])
 
     useEffect(() => {
         printB();
@@ -15,7 +18,7 @@ export default function ExemploUseCallback(){
         <div>
             <button onClick={() => setA(a+1)} >A = {a}</button>
             <button onClick={() => setB(b+1)} >B = {b}</button>
-            <MeuComponente printB={printB} />
+            {meuComp}
         </div>
     )
 }
@@ -24,6 +27,8 @@ function MeuComponente(props){
     useEffect(() => {
         console.log('Meu Componente')
     }, [props.printB])
+
+    console.log(888888888)
     
     return(
         <button onClick={props.printB} >![B]!</button>
