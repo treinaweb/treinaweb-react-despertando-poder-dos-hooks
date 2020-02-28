@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import useOnlineStatus from './data/hooks/useOnlineStatus';
+import useLocalStorage from './data/hooks/useLocalStorage';
 
 function App() {
-  const isOnline = useOnlineStatus();
+  const [counter, setCounter] = useLocalStorage('counter', 1);
 
   return (
     <div>
-      {isOnline ? 'Você está conectado' : 'Você desconectou'}
+      <button onClick={() => setCounter(counter + 1)} >{counter}</button>
     </div>
   );
 }
