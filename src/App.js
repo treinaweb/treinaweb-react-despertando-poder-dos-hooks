@@ -1,22 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import useKeyPress from './data/hooks/useKeyPress';
+import useWindowSize from './data/hooks/useWindowSize';
 
 function App() {
-  const keyA = useKeyPress('a');
-  const keyB = useKeyPress('b');
-
-  useEffect(() => {
-    if(keyA){
-      // alguma coisa
-    }
-  }, [keyA])
-
+  const windowSize = useWindowSize();
 
   return (
     <div>
-      {keyA && 'A'}
-      {keyB && 'B'}
+      Largura: {windowSize.width}
+      <br />
+      Altura: {windowSize.height}
     </div>
   );
 }
