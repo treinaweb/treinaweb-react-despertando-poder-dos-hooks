@@ -1,20 +1,22 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import useOnScreen from './data/hooks/useOnScreen';
+import useKeyPress from './data/hooks/useKeyPress';
 
 function App() {
-  const element = useRef();
-  const isVisible = useOnScreen(element);
+  const keyA = useKeyPress('a');
+  const keyB = useKeyPress('b');
 
   useEffect(() => {
-    console.log(isVisible);
-  }, [isVisible])
+    if(keyA){
+      // alguma coisa
+    }
+  }, [keyA])
+
 
   return (
     <div>
-      <br /><br /><br /><br /><br /><br /><br /><br />
-      <br /><br /><br /><br /><br /><br /><br /><br />
-      <div ref={element} >TreinaWeb</div>
+      {keyA && 'A'}
+      {keyB && 'B'}
     </div>
   );
 }
