@@ -1,20 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useRef, useEffect} from 'react';
 import './App.css';
-import useDebounce from './data/hooks/useDebounce';
+import useOnScreen from './data/hooks/useOnScreen';
 
 function App() {
-  const [text, setText] = useState('');
-  const myText = useDebounce(text, 1000);
+  const element = useRef();
+  const isVisible = useOnScreen(element);
 
   useEffect(() => {
-    console.log(text);
-  }, [myText])
+    console.log(isVisible);
+  }, [isVisible])
 
   return (
     <div>
-      <input onChange={event => setText(event.target.value)} type="text" />
-      <br/>
-      <div>{myText}</div>
+      <br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br /><br /><br /><br />
+      <div ref={element} >TreinaWeb</div>
     </div>
   );
 }
