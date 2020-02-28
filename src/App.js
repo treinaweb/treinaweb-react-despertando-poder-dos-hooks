@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Lista from './ui/Lista';
+import useOnlineStatus from './data/hooks/useOnlineStatus';
 
 function App() {
+  const isOnline = useOnlineStatus();
+
   return (
     <div>
-      <Lista />
+      {isOnline ? 'Você está conectado' : 'Você desconectou'}
     </div>
   );
 }
