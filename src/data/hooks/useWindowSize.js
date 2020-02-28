@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useDebugValue} from 'react';
 
 function getWindowSize(){
     return {
@@ -11,7 +11,7 @@ export default function useWindowSize(){
     const [size, setSize] = useState(getWindowSize());
 
     function updateSize(){
-        setSize(getWindowSize());
+        setSize(getWindowSize())
     }
 
     useEffect(() => {
@@ -20,6 +20,10 @@ export default function useWindowSize(){
             window.removeEventListener('resize', updateSize);
         }
     }, [])
+
+    useDebugValue(size.height < 120 ? 'Janela Pequena':'Janela Grande', (text)=>{
+        return text.toUpperCase();
+    });
 
     return size;
 }
