@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-
-import ExemploUseCallback from './ui/ExemploUseCallback';
+import Lista from './ui/Lista';
 
 function App() {
   return (
     <div>
-      <ExemploUseCallback />
+      <Lista />
     </div>
   );
 }

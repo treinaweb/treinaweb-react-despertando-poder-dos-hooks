@@ -1,9 +1,10 @@
 import React, {useState, useReducer} from 'react';
-import {myState, myReducer} from './ListaReducer';
+//import {myState, myReducer} from './ListaReducer';
+import useMeuHook from '../data/hooks/useMeuHook';
 
 
 export default function Lista(){
-    const [list, setList] = useReducer(myReducer, myState);
+    const [list, setList] = useMeuHook([]);
 
     function add(){
         setList({type: 'add'});
