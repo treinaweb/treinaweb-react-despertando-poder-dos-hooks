@@ -1,0 +1,107 @@
+body{
+  background-color: #f2f2f2;
+}
+.App{
+  display: grid;
+  grid-template-columns: 1fr 354px;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 
+  "video form" 
+  "list list";
+  grid-gap: 32px;
+  padding: 16px;
+}
+.form{
+  display: grid;
+  padding: 16px;
+  grid-template-columns: 70px 1fr;
+  grid-gap: 16px;
+  grid-area: form;
+  align-items: center;
+  width: 320px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  justify-self: end;
+  align-self: flex-start;
+  background-color: #f5f5f5;
+}
+.video-player{
+  grid-area: video;
+  width: 100%;
+  background: #111;
+  color: white;
+}
+video{
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.controls{
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-gap: 16px;
+  align-items: center;
+  background-color: #333;
+  padding: 4px 8px;
+}
+input[type=range]{
+  padding: 0;
+}
+.video-player h2{
+  padding: 0;
+  margin: 0;
+  color: #333;
+  background-color: #f2f2f2;
+  font-size: 32px;
+}
+.list{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 320px);
+  grid-gap: 24px;
+  grid-area: list;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list li{
+  position: relative;
+  cursor: pointer;
+}
+.list li:hover{
+  opacity: .8;
+}
+.list li img{
+  width: 320px;
+  height: 180px;
+}
+.list li span{
+  position: absolute;
+  background: black;
+  color: white;
+  top: 0;
+  right: 0;
+  padding: 4px 8px;
+}
+.list li h2{
+  margin: 0;
+  font-size: 18px;
+}
+
+button{
+  background-color: #0062ac;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input{
+  border-radius: 3px;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
